@@ -7,27 +7,57 @@ var humidity = document.getElementById('humidity')
 var uvIndex = document.getElementById('uvIndex')
 var fiveCards = document.getElementById('cards')
 var futureForecast = document.getElementById('fiveDay')
-var buttons = JSON.parse(localStorage.getItem('cityName')) || []
-//my API key
-var key = '60f4014c529f2761598d19c3516e8ede'
+var searchedCity = JSON.parse(localStorage.getItem('cityName')) || [] 
+
+// API key
+const key = '60f4014c529f2761598d19c3516e8ede'
 
 // displays the current date.
 var date = moment().format('L');
 $('#date').text(date)
 
 // search button kicks off everything
-$('#searchBtn').click(searchCity)
+$('#searchBtn').click(function () {    
+    searchCity()
+    cityButtons()
+})
 
+// setting searched cities as buttons to click on and search again
+function cityButtons() {
+    var button = JSON.parse(localStorage.getItem('cityName'))
+    var searchHisBtn = document.getElementById('searchedCityBtn')
+    searchHisBtn.innerHTML = ''
+    for (i = 0; i < button.length; i++) {
+        const createBtn = document.createElement('button')
+        createBtn.classList.add('searchedCityBtn')
+        createBtn.textContent = button[i] 
+        searchHisBtn.append(createBtn)
+    }
+}
+
+$('.searchedCityBtn').click(function(event){
+    var cityName = event.target.textContent
+    console.log(event.target.textContent)
+    searchCity (cityName)
+})
 
 
 // searching by city and setting to local storage 
-function searchCity () {
+function searchCity (cityParam) {
     currentInfo.classList.remove('hide')
     futureForecast.classList.remove('hide')
-
-    var city = document.getElementById('searchBar').value
-    localStorage.setItem('cityName', city)
-    console.log(city)
+   
+    let city = ''
+    if (document.getElementById('searchBar').value) {
+        city = document.getElementById('searchBar').value
+    } else { 
+        city = cityParam
+    }
+    
+    if (!searchedCity.includes(city)) {
+    searchedCity.push(city)}
+    localStorage.setItem('cityName', JSON.stringify(searchedCity))
+    console.log(searchedCity)
     
     var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=60f4014c529f2761598d19c3516e8ede&units=imperial'
 
@@ -47,10 +77,7 @@ function searchCity () {
     })
 }
 
-
-
-
-// getting uv-index using lat and lon from original fetch 
+// getting uv-index using lat and lon from original fetch
 function getUv (city) {
 
     var uvUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + cityInfo.coord.lat + '&lon=' + cityInfo.coord.lon + '&units=imperial&appid=60f4014c529f2761598d19c3516e8ede'
@@ -69,15 +96,6 @@ function getUv (city) {
     })    
 }
 
-// setting searched cities as buttons to click on and search again
-function cityButtons() {
-    var cityBtn = ''
-    for (i = 0; i < buttons.length; i++) {
-        cityBtn += '<button id="' + buttons[i] + '">' + buttons[i] + '</button>'
-    }
-
-}
-
 // displaying weather data in corresponding DOM area. 
 function displayWeather(city, cityInfo) {
     $('#city').text(city)
@@ -89,7 +107,7 @@ function displayWeather(city, cityInfo) {
     if (cityInfo.current.uvi <= 4) {
         uvIndex.classList.add('favorable');
     } 
-    if (cityInfo.current.uvi > 4 && cityInfo.current.uvi < 6 ){
+    if (cityInfo.current.uvi > 4 && cityInfo.current.uvi <= 6 ){
         uvIndex.classList.add('moderate');
     } 
     if (cityInfo.current.uvi > 6) {
@@ -132,3 +150,5 @@ function displayWeather(city, cityInfo) {
     $('#day5humi').text(cityInfo.daily[5].humidity)
 
 }
+
+cityButtons ()

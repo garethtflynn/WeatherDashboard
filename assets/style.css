@@ -51,12 +51,18 @@ aside {
     font-style: italic;
 }
 
-.searchedCity {
+button {
     background-color: grey;
     height: 25px;
     width: 275px;
     color: whitesmoke;
     border-radius: 5px;
+    margin-top: 4px;
+}
+
+button:hover {
+    opacity: 75%;
+    font-style: italic;
 }
 
 .currentDay {
@@ -95,14 +101,19 @@ aside {
 
 
 .favorable {
- color:  rgb(1, 90, 1);
-
+ background-color:  rgb(1, 90, 1);
+ width: 95px;
+border-radius: 2px;
 }
 
 .moderate {
-    color:rgb(201, 201, 24)
+    background-color:rgb(238, 238, 52);
+    width: 95px;
+    border-radius: 2px;
 }
 
 .severe {
-    color: rgb(189, 1, 1);
+    background-color: rgb(189, 1, 1);
+    width: 95px;
+    border-radius: 2px;
 }
