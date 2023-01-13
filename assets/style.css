@@ -1,119 +1,146 @@
-*, *::before, *::after{
-    box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 body {
-    padding: 0;
-    margin: 0; 
+  padding: 0;
+  margin: 0;
 }
 
 aside {
-    margin-left: 7px;
-    width: 275px;
+  margin-left: 7px;
+  width: 275px;
 }
 
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: grey;
-    padding: 0%;
-    margin: 0%;
-    height: 75px;
-    background: linear-gradient(45deg, rgb(193, 192, 192), rgb(14, 14, 108));
-    color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  padding: 0%;
+  margin: 0%;
+  height: 75px;
+  background: linear-gradient(45deg, rgb(193, 192, 192), rgb(14, 14, 108));
+  color: whitesmoke;
 }
 
 .search-bar-header {
-    margin-bottom: 5px;
-    font-size: 30px;
+  margin-bottom: 5px;
+  font-size: 30px;
+}
+
+.searchBar-container{
+    display: flex;
+
+}
+
+.clearHistory {
+  display: flex;
+  justify-content: center;
 }
 
 .searchBar {
-    width: 275px;
-    height: 35px;
-    border: solid 1px black;
+  width: 275px;
+  height: 35px;
+  border: solid 1px black;
 }
 
 .btn {
-    width: 275px;
-    margin-top: 5px;
-    height: 25px;
-    background-color:  rgb(14, 14, 108);
-    color: whitesmoke; 
+  width: 275px;
+  height: 25px;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+
+.clearHistoryBtn{
+    display: flex;
+    justify-content: center;
+    background-color: grey;
+    margin-top: 4px;
+    padding: 2px;
     border-radius: 5px;
+    width: 150px;
+}
+
+.searchBtn{
+    background-color: rgb(14, 14, 108);
+    width: 50px;
+    height: 35px;
+}
+
+.searchedCityBtn{
 
 }
 
 .btn:hover {
-    opacity: 75%;
-    font-style: italic;
+  opacity: 75%;
+  font-style: italic;
 }
 
 button {
-    background-color: grey;
-    height: 25px;
-    width: 275px;
-    color: whitesmoke;
-    border-radius: 5px;
-    margin-top: 4px;
+  background-color: grey;
+  height: 25px;
+  width: 275px;
+  color: whitesmoke;
+  border-radius: 5px;
 }
 
 button:hover {
-    opacity: 75%;
-    font-style: italic;
+  opacity: 75%;
+  font-style: italic;
 }
 
 .currentDay {
-    border: solid 1px black;
-    position: absolute;
-    width: 1025px;
-    padding-left: 7px;
-    left: 325px;
-    margin-top: 15px;
+  border: solid 1px black;
+  position: absolute;
+  width: 1025px;
+  padding-left: 7px;
+  left: 325px;
+  margin-top: 15px;
 }
 
 .fiveDay {
-    position: absolute;
+  position: absolute;
 }
 
 .cards {
-    display: flex;
-    justify-content: space-between;
-    width: 1000px;
-    list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+  list-style: none;
 }
 
- ul div {
-    width: 300px;
-    background-color: rgb(110, 129, 146);
-    border-style: solid;
-    border-width: 20px;
-    border-color: white;
-    text-align: center;
-    color: whitesmoke;
+ul div {
+  width: 300px;
+  background-color: rgb(110, 129, 146);
+  border-style: solid;
+  border-width: 20px;
+  border-color: white;
+  text-align: center;
+  color: whitesmoke;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
-
 .favorable {
- background-color:  rgb(1, 90, 1);
- width: 95px;
-border-radius: 2px;
+  background-color: rgb(1, 90, 1);
+  width: 95px;
+  border-radius: 2px;
 }
 
 .moderate {
-    background-color:rgb(238, 238, 52);
-    width: 95px;
-    border-radius: 2px;
+  background-color: rgb(238, 238, 52);
+  width: 95px;
+  border-radius: 2px;
 }
 
 .severe {
-    background-color: rgb(189, 1, 1);
-    width: 95px;
-    border-radius: 2px;
+  background-color: rgb(189, 1, 1);
+  width: 95px;
+  border-radius: 2px;
 }
