@@ -68,7 +68,7 @@ function cityButtons() {
     searchHisBtn.innerHTML = ''
     for (i = 0; i < searchedCity.length; i++) {
         const createBtn = document.createElement('button')
-        createBtn.classList.add('searchedCityBtn')
+        createBtn.classList.add('hover:opacity-75', )
         createBtn.textContent = button[i] 
         searchHisBtn.append(createBtn)
     }
@@ -79,8 +79,8 @@ function cityButtons() {
 
 // searching by city and setting to local storage 
 function searchCity (city) {
-    currentInfo.classList.remove('hide')
-    futureForecast.classList.remove('hide')
+    currentInfo.classList.remove('hidden')
+    futureForecast.classList.remove('hidden')
     
     if (!searchedCity.includes(city)) {
     searchedCity.push(city)}
@@ -125,13 +125,13 @@ function searchCity (city) {
             $('#humidity').text('Humidity: ' + cityInfo.current.humidity + '%')
             $('#uvIndex').text('UV-Index: ' + cityInfo.current.uvi) 
             if (cityInfo.current.uvi <= 4) {
-                uvIndex.classList.add('favorable');
+                uvIndex.classList.add('bg-emerald-700', 'p-0.5', 'rounded');
             } 
             if (cityInfo.current.uvi > 4 && cityInfo.current.uvi <= 6 ){
-                uvIndex.classList.add('moderate');
+                uvIndex.classList.add('bg-yellow-500', 'p-0.5', 'rounded');
             } 
             if (cityInfo.current.uvi > 6) {
-                uvIndex.classList.add('severe')
+                uvIndex.classList.add('bg-red-700', 'p-0.5', 'rounded')
             }
         
             // forecast for day 1/5

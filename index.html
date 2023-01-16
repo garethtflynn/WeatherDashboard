@@ -4,98 +4,109 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="./assets/style.css" /> -->
     <title>Weather Dashboard</title>
   </head>
-  <body>
-    <header><h1 class="header">Weather Dashboard</h1></header>
-    <section id="currentInfo" class="currentDay currentCity hide">
-      <h2 id="city" class="city">City:</h2>
-      <div>
-        <img id="currentDayimg" src="" alt="" />
+  <body class="bg-black text-orange-50 font-serif
+  ">
+    <div class="text-5xl p-2">
+      <header><h1 class="header">Weather Dashboard</h1></header>
+    </div>
+    <div class="w-full h-screen">
+      <br />
+      <div class="flex flex-col justify-center">
+        <div class="searchBar-container flex justify-center m-1">
+          <input
+            id="searchBar"
+            class="searchBar w-6/12 h-8 text-black p-1 rounded"
+            placeholder="Search City"
+            type="text"
+          />
+          <button
+            id="searchBtn"
+            class="searchBtn btn bg-neutral-500 p-1 rounded h-8 hover:opacity-75 ml-2"
+          >
+            Search
+          </button>
+        </div>
+        <br/>
+        <br/>
+        <div
+          id="searchedCityBtn"
+          class="searchedCityBtn flex flex-col text-2xl"
+        ></div>
+        <br />
+        <div class="flex justify-center">
+          <button
+            id="clearHistory"
+            class="clearHistoryBtn btn bg-neutral-500 p-1 rounded h-8 m-1 hover:opacity-75"
+          >
+            Clear History
+          </button>
+        </div>
       </div>
-      <div>
-        <p id="date"></p>
-      </div>
-      <div>
-        <p id="temp"></p>
-      </div>
-      <div>
-        <p id="wind"></p>
-      </div>
-      <div>
-        <p id="humidity"></p>
-      </div>
-      <div>
-        <p id="uvIndex" class="uvIndex"></p>
-      </div>
-      <section id="fiveDay" class="fiveDay hide">
-        <h3>5-day Forecast:</h3>
-        <ul id="cards" class="cards">
-          <div>
-            <li>
-              <p><span id="day1"></span></p>
-              <img id="day1img" src="" alt="" />
-              <p>Temp: <span id="day1temp"></span> &deg;F</p>
-              <p>Wind: <span id="day1wind"></span> mph</p>
-              <p>Humidity: <span id="day1humi"></span>%</p>
-            </li>
+      <section id="currentInfo" class="hidden">
+        <div
+          id="currentCityInfo"
+          class="currentCityInfo grid justify-center items-center md:grid-cols-2"
+        >
+          <div class="p-12 flex flex-col">
+            <div class="">
+            <h2 id="city" class="city text-3xl">City:</h2>
+            <img id="currentDayimg" width="50" height="50" src="" alt="weather-image" />
+            <p id="date"></p>
+            <p id="temp"></p>
+            <p id="wind"></p>
+            <p id="humidity"></p>
+            <p id="uvIndex" class="uvIndex w-fit"></p>
           </div>
-          <div>
-            <li>
-              <p><span id="day2"></span></p>
-              <img id="day2img" src="" alt="" />
-              <p>Temp: <span id="day2temp"></span> &deg;F</p>
-              <p>Wind: <span id="day2wind"></span> mph</p>
-              <p>Humidity: <span id="day2humi"></span>%</p>
-            </li>
           </div>
-          <div>
-            <li>
-              <p><span id="day3"></span></p>
-              <img id="day3img" src="" alt="" />
-              <p>Temp: <span id="day3temp"></span> &deg;F</p>
-              <p>Wind: <span id="day3wind"></span> mph</p>
-              <p>Humidity: <span id="day3humi"></span>%</p>
-            </li>
+          <div id='fiveDay'class="fiveDay hidden flex flex-col">
+            <ul
+              id="cards"
+              class="cards grid grid-cols-2 gap-4 justify-evenly place-items-center w-full"
+            >
+              <li class="bg-gray-900 w-fit p-4 rounded ">
+                <p><span id="day1"></span></p>
+                <img id="day1img" src="" alt="" />
+                <p>Temp: <span id="day1temp"></span> &deg;F</p>
+                <p>Wind: <span id="day1wind"></span> mph</p>
+                <p>Humidity: <span id="day1humi"></span>%</p>
+              </li>
+              <li class="bg-gray-900 w-fit p-4 rounded">
+                <p><span id="day2"></span></p>
+                <img id="day2img" src="" alt="" />
+                <p>Temp: <span id="day2temp"></span> &deg;F</p>
+                <p>Wind: <span id="day2wind"></span> mph</p>
+                <p>Humidity: <span id="day2humi"></span>%</p>
+              </li>
+              <li class="bg-gray-900 w-fit p-4 rounded col-span-2 justify-self-center">
+                <p><span id="day3"></span></p>
+                <img id="day3img" src="" alt="" />
+                <p>Temp: <span id="day3temp"></span> &deg;F</p>
+                <p>Wind: <span id="day3wind"></span> mph</p>
+                <p>Humidity: <span id="day3humi"></span>%</p>
+              </li>
+              <li class="bg-gray-900 w-fit p-4 rounded">
+                <p><span id="day4"></span></p>
+                <img id="day4img" src="" alt="" />
+                <p>Temp: <span id="day4temp"></span> &deg;F</p>
+                <p>Wind: <span id="day4wind"></span> mph</p>
+                <p>Humidity: <span id="day4humi"></span>%</p>
+              </li>
+              <li class="bg-gray-900 w-fit p-4 rounded">
+                <p><span id="day5"></span></p>
+                <img id="day5img" src="" alt="" />
+                <p>Temp: <span id="day5temp"></span> &deg;F</p>
+                <p>Wind: <span id="day5wind"></span> mph</p>
+                <p>Humidity: <span id="day5humi"></span>%</p>
+              </li>
+            </ul>
           </div>
-          <div>
-            <li>
-              <p><span id="day4"></span></p>
-              <img id="day4img" src="" alt="" />
-              <p>Temp: <span id="day4temp"></span> &deg;F</p>
-              <p>Wind: <span id="day4wind"></span> mph</p>
-              <p>Humidity: <span id="day4humi"></span>%</p>
-            </li>
-          </div>
-          <div>
-            <li>
-              <p><span id="day5"></span></p>
-              <img id="day5img" src="" alt="" />
-              <p>Temp: <span id="day5temp"></span> &deg;F</p>
-              <p>Wind: <span id="day5wind"></span> mph</p>
-              <p>Humidity: <span id="day5humi"></span>%</p>
-            </li>
-          </div>
-        </ul>
+        </div>
       </section>
-    </section>
-    <aside>
-      <h4 class="search-bar-header">Search for a City:</h>
-      <div class="searchBar-container">
-        <input
-          id="searchBar"
-          class="searchBar"
-          placeholder="Search City"
-          type="text"
-        />
-       <button id="searchBtn" class="searchBtn btn">Search</button>
-      </div>
-      <div >
-          <button id="clearHistory" class="clearHistoryBtn btn">Clear History</button>
-      </div>
-    <div id="searchedCityBtn" class="searchedCityBtn"></div>
-    </aside>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./assets/script.js"></script>
