@@ -11,8 +11,6 @@ var clearHistoryBtn = document.getElementById('clearHistory')
 var cityBtn = document.getElementById('searchCityBtn')
 var searchedCity = JSON.parse(localStorage.getItem('cityName')) || [] 
 
-// API key
-const key = '60f4014c529f2761598d19c3516e8ede'
 
 // displays the current date.
 var date = moment().format('L');
